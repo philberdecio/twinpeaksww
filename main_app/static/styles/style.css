@@ -1,0 +1,46 @@
+body {
+    background-color: rgb(169, 34, 39);
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+h1,
+h2,
+h3 {
+    color: #ffffff;
+}
+
+.title {
+    color: #ffffff;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    justify-content: center;
+    gap: 30px;
+}
+
+.gallery .card {
+    transition: .1s linear;
+}
+
+.gallery .card:hover {
+    transform: scale(1.1);
+    z-index: 10;
+}
+
+p {
+    font-size: 12px;
+}
+
+.twin-peaks {
+    font-family: Avant Garde, Avantgarde, Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    color: #644647;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 0 #47ff52, -1px -1px 0 #47ff52, 1px -1px 0 #47ff52, -1px 1px 0 #47ff52, 0px 1px 0 #47ff52, 1px 0px 0 #47ff52, 0px -1px 0 #47ff52, -1px 0px 0 #47ff52, 4px 2px 0 #333;
+}
+
