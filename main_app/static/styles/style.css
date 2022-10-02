@@ -34,7 +34,16 @@ p {
     font-size: 12px;
 }
 
+.gallery-image {
+    max-height: 100%;
+    min-height: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    object-fit: cover;
+}
+
 .twin-peaks {
+    text-align: center;
     font-family: Avant Garde, Avantgarde, Century Gothic, CenturyGothic, AppleGothic, sans-serif;
     font-size: 50px;
     font-weight: bold;
