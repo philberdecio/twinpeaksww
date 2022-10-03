@@ -3,6 +3,7 @@ from django.views import View
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
 from .models import Character
+from django.views.generic.edit import CreateView
 
 # Create your views here.
 
@@ -24,3 +25,9 @@ class CharacterList(TemplateView):
         else:
             context["characters"] = Character.objects.all()
         return context
+
+class CharacterCreate(CreateView):
+    model = Character
+    fields = ['name', 'img', 'aka', 'bio', 'see_also']
+    template_name = "character_create.html"
+    success_url = "/characters/"
