@@ -14,3 +14,11 @@ class Character(models.Model):
 
     class Meta:
         ordering = ['name']
+
+class Quote(models.Model):
+
+    quote = models.TextField(max_length=500, blank = False)
+    character = models.ForeignKey(Character, on_delete=models.CASCADE, related_name="quotes")
+
+    def __str__(self):
+        return self.quote
