@@ -3,7 +3,7 @@ from django.views import View
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
 from .models import Character
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
 from django.urls import reverse
 
@@ -45,3 +45,8 @@ class CharacterUpdate(UpdateView):
     
     def get_success_url(self):
         return reverse('character_detail', kwargs={'pk': self.object.pk})
+
+class CharacterDelete(DeleteView):
+    model = Character
+    template_name = "character_delete_confirmation.html"
+    success_url = "/characters/"
