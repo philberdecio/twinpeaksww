@@ -3,8 +3,9 @@ from django.views import View
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
 from .models import Character
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic import DetailView
+from django.urls import reverse
 
 # Create your views here.
 
@@ -36,3 +37,11 @@ class CharacterCreate(CreateView):
 class CharacterDetail(DetailView):
     model = Character
     template_name = "character_detail.html"
+
+class CharacterUpdate(UpdateView):
+    model = Character
+    fields = ['name', 'img', 'aka', 'bio', 'see_also']
+    template_name = "character_update.html"
+    
+    def get_success_url(self):
+        return reverse('character_detail', kwargs={'pk': self.object.pk})
