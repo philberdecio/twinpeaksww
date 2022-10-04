@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.views.generic.base import TemplateView
 from .models import Character
 from django.views.generic.edit import CreateView
+from django.views.generic import DetailView
 
 # Create your views here.
 
@@ -31,3 +32,7 @@ class CharacterCreate(CreateView):
     fields = ['name', 'img', 'aka', 'bio', 'see_also']
     template_name = "character_create.html"
     success_url = "/characters/"
+
+class CharacterDetail(DetailView):
+    model = Character
+    template_name = "character_detail.html"
