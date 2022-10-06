@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -7,7 +8,7 @@ class Character(models.Model):
     img = models.CharField(max_length=250, blank = False)
     aka = models.CharField(max_length=100, blank = True)
     bio = models.TextField(max_length=500, blank = False)
-    see_also = models.CharField(max_length=200, blank = True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
 
     def __str__(self):
         return self.name

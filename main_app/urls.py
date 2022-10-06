@@ -13,4 +13,5 @@ urlpatterns = [
     path('characters/<int:pk>/quotes/new', views.QuoteCreate.as_view(), name="quote_create"),
     path('quote-lists/', views.QuoteLists.as_view(), name="quote_lists"),
     path('quotelists/<int:pk>/quotes/<int:quote_pk>/', views.QuotelistQuoteAssoc.as_view(), name="quotelist_quote_assoc"),
+    path('accounts/signup/', views.Signup.as_view(), name="signup")
 ]

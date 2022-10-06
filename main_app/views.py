@@ -7,6 +7,11 @@ from .models import Character, Quote, Quotelist
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
 from django.urls import reverse
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+
 
 # Create your views here.
 
@@ -16,6 +21,7 @@ class Home(TemplateView):
 class About(TemplateView):
     template_name = "about.html"
 
+@method_decorator(login_required, name='dispatch')
 class CharacterList(TemplateView):
     template_name = "character_list.html"
 
@@ -60,6 +66,7 @@ class QuoteCreate(View):
         Quote.objects.create(quote=quote, character=character)
         return redirect('character_detail', pk=pk)
 
+@method_decorator(login_required, name='dispatch')
 class QuoteLists(TemplateView):
     template_name = "quote_lists.html"
 
@@ -91,5 +98,20 @@ class CharacterDetail(DetailView):
         context = super().get_context_data(**kwargs)
         context["quotelists"] = Quotelist.objects.all()
         return context
+
+class Signup(View):
+    def get(self, request):
+        form = UserCreationForm()
+        context = {"form": form}
+        return render(request, "registration/signup.html", context)
+    def post(self, request):
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect("home")
+        else:
+            context = {"form": form}
+            return render(request, "registration/signup.html", context)
 
 
