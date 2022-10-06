@@ -37,7 +37,7 @@ class CharacterList(TemplateView):
 
 class CharacterCreate(CreateView):
     model = Character
-    fields = ['name', 'img', 'aka', 'bio', 'see_also']
+    fields = ['name', 'img', 'aka', 'bio']
     template_name = "character_create.html"
     success_url = "/characters/"
 
