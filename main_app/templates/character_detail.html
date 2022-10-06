@@ -30,6 +30,34 @@
             <div class="quote">
                 <span><q><b>{{quote.quote}}</b></q></span>
             </div>
+            <span>
+                <div class="dropdown">
+                  <div class="dropdown-trigger">
+                    <button
+                      class="button"
+                      aria-haspopup="true"
+                      aria-controls="dropdown-menu"
+                    >
+                      <span>Add to Quote List</span>
+                      <span class="icon is-small">
+                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                      </span>
+                    </button>
+                  </div>
+                  <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                    <div class="dropdown-content">
+                      {% for quotelist in quotelists %}
+                      <a
+                        href="{% url 'quotelist_quote_assoc' quotelist.pk quote.pk %}?assoc=add"
+                        class="dropdown-item"
+                      >
+                        {{quotelist.title}}
+                      </a>
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
+              </span>
         {% empty %}
             <article class="message">
                 <div class="message-header">

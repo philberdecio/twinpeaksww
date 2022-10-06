@@ -12,6 +12,13 @@
                 <div class="quote-in-list">
                     <span><q><b>{{quote.quote}}</b></q></span>
                     <span><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- {{quote.character}}</p></span>
+                    <span>
+                        <a href="{% url 'quotelist_quote_assoc' quotelist.pk quote.pk %}?assoc=remove" class="button is-danger is-outlined">
+                        <span class="icon is-small">
+                            <i class="fas fa-times"></i>
+                        </span>
+                    </a>
+                    </span>
                 </div>
 
             {% endfor %}

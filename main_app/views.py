@@ -67,3 +67,29 @@ class QuoteLists(TemplateView):
         context = super().get_context_data(**kwargs)
         context['quotelists'] = Quotelist.objects.all()
         return context
+
+class QuotelistQuoteAssoc(View):
+
+    def get(self, request, pk, quote_pk):
+        # get the query param from the url
+        assoc = request.GET.get("assoc")
+        if assoc == "remove":
+            # get the playlist by the id and
+            # remove from the join table the given song_id
+            Quotelist.objects.get(pk=pk).quotes.remove(quote_pk)
+        if assoc == "add":
+            # get the playlist by the id and
+            # add to the join table the given song_id
+            Quotelist.objects.get(pk=pk).quotes.add(quote_pk)
+        return redirect('/quote-lists/')
+
+class CharacterDetail(DetailView):
+    model = Character
+    template_name = "character_detail.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["quotelists"] = Quotelist.objects.all()
+        return context
+
+
