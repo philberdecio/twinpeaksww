@@ -1,0 +1,23 @@
+{% extends 'base.html' %} 
+{% block content %}
+<div class="home__quotelists">
+    {% for quotelist in quotelists %}
+
+        <div class="quotelist mb-5">
+            <h3 class="title is-3 has-text-success">{{quotelist.title}}</h3>
+            <hr />
+
+            {% for quote in quotelist.quotes.all %}
+
+                <div class="quote-in-list">
+                    <span><q><b>{{quote.quote}}</b></q></span>
+                    <span><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- {{quote.character}}</p></span>
+                </div>
+
+            {% endfor %}
+        </div>
+    {% empty %} 
+        <div class="quotelist mb-5">"There are no quotes in this quotelist"</div>
+    {% endfor %}
+</div>
+{% endblock %}

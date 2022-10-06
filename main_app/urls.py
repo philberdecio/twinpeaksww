@@ -9,5 +9,7 @@ urlpatterns = [
     path('characters/new/', views.CharacterCreate.as_view(), name="character_create"),
     path('artists/<int:pk>/', views.CharacterDetail.as_view(), name="character_detail"),
     path('characters/<int:pk>/update',views.CharacterUpdate.as_view(), name="character_update"),
-    path('characters/<int:pk>/delete', views.CharacterDelete.as_view(), name="character_delete")
+    path('characters/<int:pk>/delete', views.CharacterDelete.as_view(), name="character_delete"),
+    path('characters/<int:pk>/quotes/new', views.QuoteCreate.as_view(), name="quote_create"),
+    path('quote-lists/', views.QuoteLists.as_view(), name="quote_lists")
 ]

@@ -4,7 +4,7 @@
     <img class="detail-image-radius" src="{{character.img}}" alt="{{character.name}}" />
 </div>
 <div class="detail__name">
-    <h1 class="title">{{character.name}}</h1>
+    <h1 class="title character-name">{{character.name}}</h1>
 </div>
 <div class="detail__container">
     <div class="buttons">
@@ -21,8 +21,41 @@
     </div>
     <div class="detail__about">
         <h4 class="title is-4">About</h4>
-        <p>{{character.bio}}</p>
+        <p class="bio-text">{{character.bio}}</p>
     </div>
+    <div class="detail__quotes mb-5">
+        <h3 class="title is-4 quote-title">Quotes:</h3>
+
+        {% for quote in character.quotes.all %}
+            <div class="quote">
+                <span><q><b>{{quote.quote}}</b></q></span>
+            </div>
+        {% empty %}
+            <article class="message">
+                <div class="message-header">
+                    <p>No Quotes Available</p>
+                </div>
+            </article>
+
+        {% endfor %}
+    </div>
+    <form class="mb-5" action="{% url 'quote_create' character.pk %}" method="post">
+        {% csrf_token %}
+        <div class="field has-addons">
+            <div class="control">
+                <input
+                    class="input"
+                    type="text"
+                    name="quote"
+                    placeholder="add a new quote"
+                    required
+                />
+            </div>
+            <div class="control quote-add">
+                <input class="button is-primary quote-button" type="submit" value="Add Quote" />
+            </div>
+        </div>
+    </form>
 </div>
 
 {% endblock %}

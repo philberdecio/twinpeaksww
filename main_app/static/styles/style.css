@@ -74,3 +74,35 @@ p {
     padding: 1rem;
 }
 
+.quote {
+    padding: 4px;
+    width: 70%;
+    margin-left: 5%;
+}
+
+.quote-title {
+    margin-top: 20px;
+}
+
+.character-name {
+    padding-bottom: 5px;
+}
+
+.bio-text {
+    font-size: large;
+}
+
+.quote-add {
+    margin-top: auto;
+}
+
+.quote-button {
+    padding: 5 px;
+}
+
+.quote-in-list {
+    padding: 8px;
+    width: 80%;
+    margin-left: 5%;
+}
+

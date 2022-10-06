@@ -22,3 +22,13 @@ class Quote(models.Model):
 
     def __str__(self):
         return self.quote
+
+class Quotelist(models.Model):
+
+    title = models.CharField(max_length=150)
+    # this is going to create the many to many relationship and join table
+    quotes = models.ManyToManyField(Quote)
+
+    def __str__(self):
+        return self.title
+
